@@ -46,7 +46,7 @@ public final class Grid {
         return new Grid(width, height, temporary);
     }
 
-    public void setRoversCell(Cell cell, Rover rover) {
+    public void putRoverOnCell(Cell cell, Rover rover) {
         grid.put(cell, Optional.of(rover));
     }
 }

@@ -10,7 +10,7 @@ public class Rover {
         this.currentCell = cell;
         this.grid = grid;
 
-        grid.setRoversCell(currentCell, this);
+        grid.putRoverOnCell(currentCell, this);
     }
 
     public static Rover spawn(Grid grid, int row, int col) {
@@ -29,7 +29,7 @@ public class Rover {
 
     private void updatePosition(Cell newPosition) {
         currentCell = newPosition;
-        grid.setRoversCell(currentCell, this);
+        grid.putRoverOnCell(currentCell, this);
     }
 
     @Override
