@@ -4,7 +4,7 @@ import java.util.HashMap;
 import java.util.Optional;
 
 public final class Grid {
-    private static HashMap<Cell, Optional<Rover>> grid;
+    private final HashMap<Cell, Optional<Rover>> grid;
     private final int width;
     private final int height;
 
@@ -47,11 +47,23 @@ public final class Grid {
     }
 
     public void putRoverOnCell(Cell cell, Rover rover) {
-        Cell wrappedCell = new Cell(
+        Cell wrappedCell = wrap(cell);
+        grid.put(wrappedCell, Optional.of(rover));
+    }
+
+    public void removeRoverFromCell(Cell cell) {
+        grid.put(wrap(cell), Optional.empty());
+    }
+
+    public Optional<Rover> getRoverAt(Cell cell) {
+        return grid.get(wrap(cell));
+    }
+
+    public Cell wrap(Cell cell) {
+        return new Cell(
                 Math.floorMod(cell.row(), width),
                 Math.floorMod(cell.column(), height)
         );
-        grid.put(wrappedCell, Optional.of(rover));
     }
 
 }
