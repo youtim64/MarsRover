@@ -21,7 +21,7 @@ public class Rover {
     public void move(MovementDirection direction) {
         Cell newPosition = new Cell(
                 currentCell.row() + direction.moveToward(currentCell).get(0),
-                currentCell.row() + direction.moveToward(currentCell).get(1)
+                currentCell.column() + direction.moveToward(currentCell).get(1)
         );
 
         updatePosition(newPosition);
