@@ -47,6 +47,11 @@ public final class Grid {
     }
 
     public void putRoverOnCell(Cell cell, Rover rover) {
-        grid.put(cell, Optional.of(rover));
+        Cell wrappedCell = new Cell(
+                Math.floorMod(cell.row(), width),
+                Math.floorMod(cell.column(), height)
+        );
+        grid.put(wrappedCell, Optional.of(rover));
     }
+
 }
